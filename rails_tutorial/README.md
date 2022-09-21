@@ -306,6 +306,34 @@ a[0..1]
 
 ### 4.3.3 ハッシュとシンボル
 
+ハッシュ
+
+- インデックスとして整数値以外のものを使える
+- 並び順が保証されない
+- キーとしては（文字列ではなく）シンボルを使うのが普通
+
+```rb
+user = {}
+user = { "first_name" => "hoge", "last_name" => "hahaha" } # リテラル表現での定義
+user = { :name => "hoge", :email => "hahaha" } # リテラル表現での定義
+x = user[:password] # nil
+user = { name: "hoge", email: "hahaha" } # 同じ意味
+```
+
+ネストされたハッシュ
+
+```rb
+params = {}
+params[:user] = { name: "test", email: "aaa@example.com" }
+y = params[:user][:email] # aaa@example.com
+```
+
+- inspect
+  - 要求されたオブジェクトを表現する文字列を返す
+  - `p`
+
+### 4.3.4 CSS、再び
+
 ---
 
 ## 気になったこと
