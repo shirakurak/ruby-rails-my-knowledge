@@ -109,6 +109,92 @@
 
 ### 4.2 文字列とメソッド
 
+- Railsコンソール
+  - Railsアプリケーションを対話的に操作するためのコマンドラインツール
+  - irb(interactive Ruby)を拡張して作られている
+  - Rubyの機能をすべて使える
+  - これを使用してRubyを学ぶ
+
+```sh
+$ rails console
+Loading development environment (Rails 7.0.4)
+irb(main):001:0> 
+```
+
+デフォルトでは、コンソールは、development環境で起動する。
+`Ctrl-C`あるいは`Ctrl-D`で抜けられる。
+
+#### 4.2.1 コメント
+
+- `#`
+
+#### 4.2.2 文字列
+
+- Webアプリにおける最も重要なデータ構造
+- > Webページというものが究極的にはサーバーからブラウザに送信された文字列にすぎない
+- 文字列リテラル
+- 文字列の結合
+- 式展開 `#{}`
+
+```irb
+irb(main):016:0> "#{first_name} #{last_name}"
+=> "test aaa"
+```
+
+出力
+
+- `puts`：put string
+  - `\n`が自動で末尾に出力
+- `print`は改行しない
+
+シングルクォート内の文字列
+
+- シングルクォート内では、式展開が行われない
+- エスケープせずに表示するときに使用
+
+### 4.2.3 オブジェクトとメッセージ受け渡し
+
+- オブジェクト：（いついかなる場合にも）メッセージに応答するもの
+  - メッセージ：（オブジェクト内で定義された）メソッドのこと
+- `nil`もオブジェクト
+
+```irb
+irb(main):008:0> "atamanonaka".empty? # 文字列オブジェクトにempty?というメッセージを送っている
+=> false # 結果が応答
+```
+
+- 返り値がbooleanの場合、メソッド名の末尾に疑問符をつける慣習
+
+```irb
+irb(main):010:1* if s.nil?
+irb(main):011:1*   "nil!"
+irb(main):012:1* elsif s.empty?
+irb(main):013:1*   "empty"
+irb(main):014:1* elsif s.include?("ue")
+irb(main):015:1*   "he!"
+irb(main):016:0> end
+=> "he!"
+```
+
+論理値は`&&`, `||`, `!`
+
+```irb
+irb(main):018:0> nil.to_s.empty?
+=> true
+```
+
+```rb
+puts "xは空じゃないよ" if !x.empty? # 後続if
+puts "#{x}だよ、空じゃないよ" unless x.empty? # 上と同じ意味
+```
+
+`nil`について
+
+- Rubyのオブジェクトのうち、オブジェクトの論理値そのものがfalseになるのは、`false`と`nil`のみ
+- `0`も`true`
+
+### 4.2.4 メソッドの定義
+
 ---
 
 ## 気になったこと
