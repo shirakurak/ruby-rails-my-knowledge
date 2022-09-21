@@ -1,5 +1,7 @@
 # Ruby on Rails チュートリアル
 
+第1, 2章は省略
+
 ## 第3章 ほぼ静的なページ
 
 - 静的なページの作成から始める
@@ -333,6 +335,73 @@ y = params[:user][:email] # aaa@example.com
   - `p`
 
 ### 4.3.4 CSS、再び
+
+- メソッド呼び出しの丸カッコは省略可能
+- ハッシュがメソッド呼び出しの最後の引数である場合は、波カッコを省略できる
+
+```erb
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+```
+
+- `stylesheet_link_tag`メソッドを2つの引数で呼び出し
+- 2つ目の引数はハッシュ
+  - turbolinksという機能をONにしている
+
+## 4.4 Rubyにおけるクラス
+
+クラスにより、メソッドをまとめ、インスタンスが生成されることで、オブジェクトが作成される
+
+### 4.4.1 コンストラクタ
+
+- ダブルクォートは、（暗黙的な）文字列のコンストラクタ
+- 明示的に、名前付きコンストラクタも使える
+  - `s = String.new("foo")`
+- 同様に：`a = Array.new([1, 3, 1])`
+- ハッシュでは、ハッシュのデフォルト値を引数に取る
+
+```irb
+> h = Hash.new(0)
+=> {}
+> h[:foo]
+=> 0
+```
+
+上記の`new`は、クラスメソッド
+
+### 4.4.2 クラス継承
+
+`superclass`メソッドを使って、クラス階層を調べられる
+
+- `String < Object < BasicObject`
+
+Stringクラスを継承したWordクラスを定義する
+
+```rb
+class Word < String
+  def palindrome?
+    self == self.reverse # オブジェクト自身が持つ単語にアクセスし比較
+  end
+end
+```
+
+### 4.4.3 組み込みクラスの変更
+
+Rubyでは組み込み基本クラスの拡張が可能
+
+- 真に正統的な理由がある場合
+  - 例：変数が絶対に空白にならないようにしたい場合
+  - Railsは`blank?`メソッドをRubyに追加している
+    - `""`, `"   "`, `nil`は`blank?`でtrue
+
+### 4.4.4 コントローラクラス
+
+`StaticPagesController < ApplicationController < ActionController::Base < ActionController::Metal < AbstractController::Base < Object`
+
+- Railsのアクションには戻り値がない
+
+### 4.4.5 ユーザークラス
+
+
 
 ---
 
