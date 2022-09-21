@@ -401,7 +401,11 @@ Rubyでは組み込み基本クラスの拡張が可能
 
 ### 4.4.5 ユーザークラス
 
+- マスアサインメント(mass assignment)
+  - 属性が定義済みの他のユーザを作成できる
+  - `user = User.new(name: "Michael Hartl`, email: "mhartl@example.com")
 
+## 4.5 最後に
 
 ---
 
